@@ -349,10 +349,10 @@ Infographic context:
   position: relative;
   width: 96vw;
   max-width: 1400px;
-  height: 92vh;
+  height: 100vh;
   display: grid;
   grid-template-rows: 1fr auto auto;
-  gap: 16px;
+  gap: 10px;
   overflow: hidden;
 `,D3=b.div`
   display: flex;
@@ -375,7 +375,7 @@ Infographic context:
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 16px;
+  border-radius: 15px;
   user-select: none;
   -webkit-user-drag: none;
   cursor: none;
