@@ -280,7 +280,6 @@ Infographic context:
 - Author: "${s}"
 `.trim()}async function T3(a){const{title:i,description:s,username:o,imageUrl:f}=a,d="AIzaSyDYGHcNYuuk43rrYSBVBIQGegzOGVtjGrw",{base64:p,mime:v}=await C3(f),m={contents:[{parts:[{text:z3({title:i,description:s,username:o})},{inline_data:{mime_type:v,data:p}}]}],generationConfig:{temperature:.6,topK:32,topP:.9,maxOutputTokens:1200,response_mime_type:"application/json"}},S="https://generativelanguage.googleapis.com/v1beta",w=["gemini-2.5-flash","gemini-2.0-flash"];let z;for(const M of w)try{const R=`${S}/models/${M}:generateContent?key=${encodeURIComponent(d)}`,N=await fetch(R,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(m)});if(!N.ok)throw new Error(`Gemini error (${N.status}): ${await N.text()}`);const L=(await N.json())?.candidates?.[0]?.content?.parts?.[0]?.text;if(!L)throw new Error("Empty response from Gemini");let H;try{H=JSON.parse(L)}catch{const D=String(L).replace(/^```json\s*/i,"").replace(/^```\s*/i,"").replace(/```$/i,"").trim();H=JSON.parse(D)}const G=Array.isArray(H.bullets)?H.bullets.slice(0,5):[],q=Array.isArray(H.mcqs)?H.mcqs.slice(0,5):[];if(!G.length||!q.length)throw new Error("Malformed AI content");const K=q.map(D=>({question:String(D.question||"").slice(0,140),options:Array.isArray(D.options)&&D.options.length?D.options.slice(0,5):["Not present"],correctIndex:Number.isInteger(D.correctIndex)?D.correctIndex:0,explanation:D.explanation?String(D.explanation).slice(0,140):void 0}));return{bullets:G,mcqs:K}}catch(R){z=R}throw z||new Error("Gemini request failed")}function M3({avatarSrc:a=dc.teacherProfilePic,title:i,description:s,imgSrc:o,username:f,postUrl:d,onLikeChange:p,onBookmarkChange:v,onShare:x}){const[m,S]=y.useState(!1),[w,z]=y.useState(!1),[M,R]=y.useState(!1),[N,B]=y.useState(!1),[L,H]=y.useState(null),[G,q]=y.useState(null),[K,D]=y.useState(0);y.useEffect(()=>{const te=G?.mcqs?.length||0;te!==0&&D(me=>Math.max(0,Math.min(me,te-1)))},[G?.mcqs?.length]);const V=m?"Unlike":"Like",Z=w?"Remove bookmark":"Bookmark",F=()=>{const te=!m;S(te),p&&p(te)},ce=()=>{const te=!w;z(te),v&&v(te)},de=y.useMemo(()=>({title:i,text:`${f} on Infographics — ${i}`,url:d}),[i,f,d]),le=async()=>{try{navigator.share?await navigator.share(de):navigator.clipboard&&de.url&&(await navigator.clipboard.writeText(de.url),alert("Link copied to clipboard")),x&&x(de)}catch(te){console.error("Share failed:",te)}},ie=async()=>{B(!0),H(null);try{const te=await T3({title:i,description:s,username:f,imageUrl:o});q(te),D(0)}catch(te){console.error(te),H(te?.message||"Failed to generate content")}finally{B(!1)}},_e=()=>{const te=!M;R(te),te&&!G&&!N&&ie()},De=G?.mcqs?.length||0,_=De?G.mcqs[K]:null,J=K===De-1,P=()=>D(te=>Math.min(te+1,De-1));return u.jsxs(r3,{role:"article","aria-label":`${i} instagram-style post`,children:[u.jsxs(o3,{children:[u.jsxs(c3,{children:[u.jsx(s3,{src:a,alt:"avatar"}),u.jsxs(u3,{children:[u.jsx(f3,{children:i}),u.jsx(d3,{children:s})]})]}),u.jsx(h3,{"aria-label":M?"Close learn mode":"Open learn mode",title:M?"Close learn mode":"Learn more & quiz",onClick:_e,children:u.jsx(i3,{size:18})})]}),M?u.jsxs(y3,{"aria-live":"polite",children:[u.jsxs(Y1,{children:[u.jsx(G1,{children:"Know more (5 quick points)"}),N?u.jsxs("div",{style:{display:"grid",gap:8},children:[u.jsx(on,{}),u.jsx(on,{}),u.jsx(on,{}),u.jsx(on,{}),u.jsx(on,{})]}):L?u.jsxs(q1,{children:[u.jsx("span",{style:{flex:1,minWidth:0},children:L}),u.jsx(X1,{onClick:ie,"aria-label":"Retry generating content",children:"Retry"})]}):u.jsx(v3,{children:G?.bullets?.map((te,me)=>u.jsx("li",{children:te},me))})]}),u.jsxs(Y1,{children:[u.jsxs(Yg,{children:[u.jsx(G1,{style:{margin:0},children:"Test your knowledge"}),De?u.jsxs(Vo,{children:[K+1," / ",De]}):null]}),N?u.jsxs("div",{style:{display:"grid",gap:10},children:[u.jsx(on,{h:16}),u.jsx(on,{h:40}),u.jsx(on,{h:40}),u.jsx(on,{h:40}),u.jsx(on,{h:40})]}):L?u.jsxs(q1,{children:[u.jsx("span",{style:{flex:1,minWidth:0},children:"Can’t load questions."}),u.jsx(X1,{onClick:ie,children:"Retry"})]}):_?u.jsx(R3,{mcq:_,index:K+1,total:De,isLast:J,onNext:J?void 0:P,onFinish:J?()=>R(!1):void 0},K):null,!N&&!L&&_&&!J?u.jsx("div",{style:{marginTop:6},children:u.jsx(Vo,{children:"Tip: You can change your choice before tapping Next."})}):null]}),u.jsxs(E3,{children:[u.jsx(Vo,{children:"AI stays within the infographic; short, clear answers only."}),u.jsx(Gg,{onClick:()=>R(!1),"aria-label":"Back to image",title:"Back to image",children:"Back to image"})]})]}):u.jsx(p3,{children:u.jsx(m3,{src:o,alt:i})}),u.jsxs(g3,{children:[u.jsxs(x3,{children:[u.jsx(Co,{onClick:F,"aria-label":V,title:V,children:m?u.jsx(Ff,{size:22}):u.jsx(Wf,{size:22})}),u.jsx(Co,{"aria-label":"Comment",title:"Comment",children:u.jsx(ed,{size:20})}),u.jsx(Co,{onClick:le,"aria-label":"Share",title:"Share",children:u.jsx(td,{size:20})})]}),u.jsx(Co,{onClick:ce,"aria-label":Z,title:Z,children:w?u.jsx(If,{size:20}):u.jsx(Pf,{size:20})})]})]})}function R3({mcq:a,index:i,total:s,isLast:o,onNext:f,onFinish:d}){const[p,v]=y.useState(null),x=m=>p===null?"idle":m===a.correctIndex?"correct":m===p&&p!==a.correctIndex?"wrong":"idle";return u.jsxs(b3,{"aria-label":`Question ${i}`,children:[u.jsxs(S3,{children:[i,". ",a.question]}),u.jsx(w3,{children:a.options.map((m,S)=>u.jsx(j3,{onClick:()=>v(S),$state:x(S),"aria-pressed":p===S,"aria-label":`Option ${S+1}`,children:m},S))}),p!==null&&u.jsxs("div",{style:{display:"grid",gap:8},children:[u.jsxs(Vo,{children:[p===a.correctIndex?"✅ Correct.":"❌ Not quite.",a.explanation?` — ${a.explanation}`:""]}),o?u.jsxs(Yg,{children:[u.jsx(V1,{onClick:d,"aria-label":"Finish quiz",children:"Finish"}),u.jsx(Gg,{onClick:()=>window.scrollTo({top:0,behavior:"smooth"}),children:"Back to top"})]}):u.jsxs(V1,{onClick:f,"aria-label":"Next question",disabled:p===null,children:["Next question (",i+1,"/",s,")"]})]})]})}const A3=b.div``,O3=b.div`
   display: flex;
-  gap: 20px;
   overflow-x: auto;
   padding: 24px 0;
   scroll-snap-type: x mandatory;
@@ -300,24 +299,6 @@ Infographic context:
   cursor: pointer;
   padding: 0;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover { transform: scale(1.02); }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 16px;
-    padding: 3px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before { opacity: 1; }
 `,N3=b.img`
   width: 300px;
   height: 100%;
@@ -327,6 +308,7 @@ Infographic context:
   -webkit-user-drag: none;
   pointer-events: none;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  margin-left: 20px;
 `,_3=b.div`
   position: fixed;
   inset: 0;
