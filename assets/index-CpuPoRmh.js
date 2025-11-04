@@ -2435,8 +2435,8 @@ padding: 35px;
   padding: 1px;
 `,bw=b.div`
   font-size: 30px;
-  font-family: Roboto;
-  font-weight: 800;
+  font-family: "BBH Sans Hegarty", sans-serif;
+  font-weight: 600;
   background: black;
   background-clip: text;
   -webkit-background-clip: text;
