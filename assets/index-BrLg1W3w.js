@@ -964,11 +964,11 @@ Infographic context:
   ${a=>a.$hasNew?$n`
           background: linear-gradient(
             45deg,
-            #f09433 0%,
-            #e6683c 25%,
-            #dc2743 50%,
-            #cc2366 75%,
-            #bc1888 100%
+            #777777 0%,
+            #949494 25%,
+            #4b4b4b 50%,
+            #555555 75%,
+            #585758 100%
           );
         `:$n`
           background: transparent;
