@@ -1159,12 +1159,14 @@ Infographic context:
     }
   }
 `,v6=b.h1`
-  margin: 0;
-  font-size: clamp(22px, 6vw, 28px);
-  font-weight: 500;
-  color: #1f2937;
-  letter-spacing: -0.02em;
-  font-family: "";
+  margin: 0 0 8px 0;
+  font-size: clamp(22px, 5vw, 28px);
+  font-weight: 900;
+  background: #374151;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: Roboto, system-ui, -apple-system, Segoe UI, Inter, Roboto, sans-serif;
 `,b6=b.p`
   margin: 6px 0 0 0;
   color: #6b7280;
@@ -1383,7 +1385,7 @@ padding: 35px;
   border-radius: 12px;
   padding: 12px;
   background: ${a=>a.$isSelected?"#f3f4f6":"#ffffff"};
-  border: 2px solid ${a=>(a.$isSelected,"#e5e7eb")};
+  border: 2px solid ${a=>a.$isSelected?"#4b5563":"#e5e7eb"};
   cursor: pointer;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -1406,7 +1408,7 @@ padding: 35px;
   }
 
   &:hover {
-    border-color: ${a=>(a.$isSelected,"#d1d5db")};
+    border-color: ${a=>a.$isSelected?"#4b5563":"#d1d5db"};
     background: ${a=>a.$isSelected?"#f3f4f6":"#f9fafb"};
   }
 
