@@ -1147,8 +1147,8 @@ Infographic context:
     }
   }
 `,w6=b.img`
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 70%;
   object-fit: cover; /* ensures it fills the circle */
   border-radius: 50%; /* ensures circular clipping */
 `,j6=b.div`
