@@ -282,17 +282,17 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   background: #fff;
   border: 1px solid rgba(2, 6, 23, 0.08);
 `,oj1=H.div`
-  padding: 12px 14px;
 `,dj1=H.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px;
+  padding: 10px 10px 0px 10px;
 `,uj1=H.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 10px;
   align-items: center;
+  width: 80%;
 `,vj1=H.img`
   width: 40px;
   height: 40px;
@@ -319,11 +319,14 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   font-size: 12px;
   color: #64748b;
 `,mj1=H.button.withConfig({shouldForwardProp:a=>a!=="$variant"})`
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  width: 85px;
   gap: 8px;
-  height: 36px;
-  padding: 0 14px;
+  height: 30px;
+  padding: 0 10px;
   border-radius: 999px;
   border: 1px solid transparent;
   font-size: 13px;
@@ -336,7 +339,7 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   `}
   &:active { transform: translateY(1px); }
 `,gj1=H.div`
-  padding: 0 14px 8px 14px;
+  padding: 0px 10px 10px 10px;
   display: flex;
   align-items: flex-start;
 `,Mj1=H.button`
@@ -447,17 +450,17 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   background: #fff;
   border: 1px solid rgba(2, 6, 23, 0.08);
 `,Oj1=H.div`
-  padding: 12px 14px;
 `,Nj1=H.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px;
+  padding: 10px 10px 0px 10px;
 `,Uj1=H.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   gap: 10px;
   align-items: center;
+  width: 80%;
 `,_j1=H.img`
   width: 40px;
   height: 40px;
@@ -484,11 +487,14 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   font-size: 12px;
   color: #64748b;
 `,Pj1=H.button.withConfig({shouldForwardProp:a=>a!=="$variant"})`
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  width: 85px;
   gap: 8px;
-  height: 36px;
-  padding: 0 14px;
+  height: 30px;
+  padding: 0 10px;
   border-radius: 999px;
   border: 1px solid transparent;
   font-size: 13px;
@@ -499,11 +505,9 @@ Please change the parent <Route path="${_}"> to <Route path="${_==="/"?"*":`${_}
   `:`
     background: #ffffff; color: #0f172a; border-color: rgba(15,23,42,.14); &:hover { background: rgba(15,23,42,.03); }
   `}
-  &:active {
-    transform: translateY(1px);
-  }
+  &:active { transform: translateY(1px); }
 `,Xj1=H.div`
-  padding: 0 14px 8px 14px;
+  padding: 0px 10px 10px 10px;
   display: flex;
   align-items: flex-start;
 `,Yj1=H.button`
